@@ -1,0 +1,366 @@
+/*-------------------------------------------- NAV ------------------------------------------------*/
+
+.nav-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  gap: 2.8rem;
+  align-items: center;
+  padding: calc(var(--section-padding) / 1.5) calc(var(--container-padding) / 1.5);
+  z-index: 999;
+  width: 100%;
+  height: 30px;
+  background-color: transparent;
+  pointer-events: none;
+}
+
+.logo {
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.nav-wrapper .nav-desktop {
+  display: flex;
+  gap: 1.8rem;
+  align-items: center;
+  pointer-events: auto;
+}
+
+.nav-wrapper .hamburger {
+  display: none;
+}
+
+.nav-wrapper .nav-mobile {
+  display: none;
+}
+
+/*-------------------------------------------- Home Header ------------------------------------------------*/
+
+main {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.home-header {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-header .flex-col {
+  height: 100%; /* Fills the height of its parent .row */
+}
+
+.home-header .thumbnail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  height: 100%;
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+.home-header .flex-col:first-child .thumbnail .mobile {
+  display: none;
+}
+
+.home-header .flex-col:first-child {
+  width: 57%;
+  z-index: 1;
+}
+
+.home-header .flex-col:nth-of-type(2) {
+  width: 43%;
+  padding: calc(var(--section-padding) + 1.3em) calc(var(--container-padding) / 1.2);
+  display: flex;
+  flex-direction: column;
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+.home-header .flex-col:nth-of-type(2) .single-info {
+  width: 68%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  transition: opacity 600ms ease, transform 600ms ease;
+  position: absolute;
+}
+
+.home-header .flex-col:nth-of-type(2) .btn-row {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.home-header .row:first-of-type .flex-col:nth-of-type(1) .btn-row {
+  display: none;
+}
+
+.hidden {
+  pointer-events: none;
+  transform: translateX(-1rem);
+  opacity: 0;
+}
+
+.home-header .row:first-of-type {
+  height: 63vh; /* First row takes up 60% of the viewport height */
+}
+
+.home-header .row:nth-of-type(2) {
+  /* Adjust selector as needed if more rows are added */
+  height: 37vh; /* Second row takes up the remaining 40% of the viewport height */
+  display: flex;
+}
+
+.home-header .row:nth-of-type(2) .flex-col:nth-of-type(1),
+.home-header .row:nth-of-type(2) .flex-col:nth-of-type(3) {
+  width: 30%;
+}
+
+.home-header .row:nth-of-type(2) .flex-col:nth-of-type(2) {
+  width: 40%;
+  flex-direction: column;
+  gap: 1rem;
+  padding: calc(var(--section-padding) / 1.2) calc(var(--container-padding) / 1.8);
+}
+
+@media screen and (max-width: 1024px) {
+  main {
+    height: 100%;
+  }
+  .home-header {
+    height: 100%;
+  }
+  .home-header .flex-col:first-child {
+    width: 100%;
+  }
+
+  .home-header .row:first-of-type .thumbnail {
+    position: relative;
+    height: 63vh;
+  }
+
+  .home-header .flex-col:nth-of-type(2) {
+    width: 100%;
+    position: relative;
+    padding: calc(var(--section-padding) / 1) calc(var(--container-padding) / 1.5);
+  }
+
+  .home-header .flex-col:nth-of-type(2) .single-info {
+    width: 100%;
+    position: relative;
+  }
+
+  .home-header .row:first-of-type {
+    height: 100%; /* First row takes up 60% of the viewport height */
+  }
+  .home-header .row:nth-of-type(2) {
+    height: 100%;
+  }
+
+  .home-header .row:nth-of-type(2) .flex-col:nth-of-type(1),
+  .home-header .row:nth-of-type(2) .flex-col:nth-of-type(3) {
+    width: 100%;
+  }
+
+  .home-header .row:nth-of-type(2) .thumbnail {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .home-header .row:nth-of-type(2) .thumbnail:before {
+    content: "";
+    display: block;
+    padding: 30%;
+  }
+
+  .home-header .row:nth-of-type(2) .flex-col:nth-of-type(2) {
+    width: 100%;
+    padding: calc(var(--section-padding) / 1) calc(var(--container-padding) / 1.5);
+  }
+
+  .hidden {
+    position: absolute !important;
+    pointer-events: none;
+    transform: translateX(0);
+    opacity: 0;
+  }
+
+  .home-header .row:first-of-type .flex-col:nth-of-type(2) .btn-row {
+    display: none;
+  }
+
+  .home-header .row:first-of-type .flex-col:nth-of-type(1) .btn-row {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    justify-content: flex-end;
+  }
+}
+@media screen and (max-width: 720px) {
+  .nav-wrapper {
+    padding: calc(var(--section-padding) / 2) calc(var(--container-padding) / 1);
+    align-items: center;
+  }
+  .nav-wrapper .nav-desktop {
+    display: none;
+  }
+
+  .nav-wrapper .logo {
+    position: absolute;
+    left: 50%;
+    top: calc(var(--section-padding) / 2.6);
+    transform: translate(-50%, 50%);
+  }
+
+  .nav-wrapper .hamburger {
+    top: 50%;
+    position: absolute;
+    width: 1.3rem;
+    height: 0.9rem;
+    background-color: transparent;
+    z-index: 350;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    pointer-events: all;
+    cursor: pointer;
+  }
+
+  .nav-wrapper .hamburger .bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-light);
+    transition: var(--animation-primary);
+  }
+
+  .nav-wrapper.active .hamburger .bar {
+    background-color: var(--color-dark);
+  }
+
+  .nav-wrapper.active .hamburger .bar-top {
+    transform: translateY(6px) rotate(45deg);
+    background-color: var(--Dark-Gray);
+  }
+
+  .nav-wrapper.active .hamburger .bar-middle {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .nav-wrapper.active .hamburger .bar-bottom {
+    transform: translateY(-6px) rotate(-45deg);
+    background-color: var(--Dark-Gray);
+  }
+
+  .nav-wrapper .nav-mobile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+  }
+
+  .nav-wrapper .nav-mobile .mobile-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.403);
+    pointer-events: auto;
+    opacity: 0;
+    transition: var(--animation-primary);
+    z-index: 200;
+    visibility: hidden;
+  }
+
+  .nav-wrapper.active .nav-mobile .mobile-bg {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-wrapper .nav-mobile .nav-bg {
+    position: fixed;
+    background-color: var(--color-light);
+    width: 100vw;
+    height: 15vh;
+    z-index: 300;
+    transition: var(--animation-primary);
+    transform: translateX(-100%);
+    opacity: 0;
+    display: flex;
+    justify-content: flex-end;
+    pointer-events: all;
+  }
+
+  .nav-wrapper.active .nav-mobile .nav-bg {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+
+  .nav-wrapper .nav-mobile .nav-bg .nav-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 var(--container-padding) 0 0;
+  }
+
+  .nav-wrapper .nav-mobile .nav-bg .btn-text {
+    color: var(--color-dark);
+  }
+
+  main {
+    height: 100%;
+  }
+  .home-header {
+    height: 100%;
+  }
+  .home-header .flex-col:first-child {
+    height: 100%;
+  }
+
+  .home-header .flex-col:nth-of-type(2) {
+    width: 100%;
+    padding: calc(var(--section-padding) / 2) calc(var(--container-padding) / 1);
+  }
+
+  .home-header .flex-col:nth-of-type(2) .single-info {
+    position: relative;
+  }
+
+  .home-header .row:first-of-type {
+    height: 100%; /* First row takes up 60% of the viewport height */
+  }
+
+  .home-header .row:nth-of-type(2) .flex-col:nth-of-type(2) {
+    padding: calc(var(--section-padding) / 2) calc(var(--container-padding) / 1);
+  }
+}
+
+@media screen and (max-width: 564px) {
+  .home-header .flex-col:first-child .thumbnail .desktop {
+    display: none;
+  }
+
+  .home-header .flex-col:first-child .thumbnail .mobile {
+    display: block;
+  }
+
+  .home-header .row:first-of-type .thumbnail {
+    height: 100%;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .home-header .row:first-of-type .thumbnail::before {
+    content: "";
+    display: block;
+    padding-top: 96%;
+  }
+}

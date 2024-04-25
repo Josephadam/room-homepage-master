@@ -1,0 +1,274 @@
+@font-face {
+  font-family: "League";
+  src: url("/assets/fonts/League_Spartan/LeagueSpartan-VariableFont_wght.ttf");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "League Light";
+  src: url("/assets/fonts/League_Spartan/LeagueSpartan-VariableFont_wght.ttf");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "League Bold";
+  src: url("/assets/fonts/League_Spartan/LeagueSpartan-VariableFont_wght.ttf");
+  font-family: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --color-dark: hsl(0, 0%, 0%);
+  --Dark-Gray: hsl(0, 0%, 63%);
+  --color-light: hsl(0, 0%, 100%);
+  --Very-Dark-Gray: hsl(0, 0%, 27%);
+  --container-padding: 8vw;
+  --section-padding: 12vh;
+  --animation-primary: 0.5s ease-in-out;
+}
+
+*,
+*::before,
+*::after {
+  --webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  --webkit-font-smoothing: antialiased;
+  font-family: "League";
+  font-weight: 600;
+  line-height: 1.1;
+  font-size: 12px;
+  font-style: normal;
+  background-color: var(--color-light);
+  color: var(--color-dark);
+}
+
+svg,
+video,
+img,
+canvas {
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+span,
+em {
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  font-family: "League Bold", sans-serif;
+  line-height: 0.9;
+  font-size: clamp(1.8em, 8vw, 3.5em);
+  font-weight: 500;
+  letter-spacing: 1px;
+  font-style: normal;
+  color: var(--color-dark);
+}
+
+h2 {
+  font-family: "League", sans-serif;
+  font-weight: 400;
+  font-size: clamp(1em, 5vw, 1.6em);
+  line-height: 1.1;
+  letter-spacing: 9px;
+  font-style: normal;
+  color: var(--color-dark);
+  text-transform: uppercase;
+}
+
+p {
+  font-family: "League Light";
+  line-height: 1.1;
+  font-weight: 300;
+  font-size: clamp(0.9rem, 3vw, 1.1rem);
+  font-style: normal;
+  color: var(--Dark-Gray);
+}
+
+.section {
+  position: relative;
+  display: block;
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+}
+
+.container {
+  width: 100em;
+  width: 100%;
+  margin: 0 auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.flex-col {
+  width: 100%;
+  display: block;
+  order: 2;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+img.overlay {
+  object-fit: cover;
+}
+
+.btn-row {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.btn {
+  position: relative;
+  border: 0;
+  outline: 0;
+  z-index: 1;
+}
+
+.btn.primary .btn-click {
+  outline: 0;
+  pointer-events: all;
+  cursor: pointer;
+  background-color: transparent;
+  transition: var(--animation-primary);
+}
+
+.btn .btn-text {
+  color: var(--color-light);
+  text-transform: lowercase;
+  font-family: "League Light", sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  transition: var(--animation-primary);
+}
+
+.btn.primary .btn-text {
+  color: var(--color-dark);
+  text-transform: uppercase;
+  font-family: "League Light", sans-serif;
+  font-weight: 500;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  letter-spacing: 10.1px;
+  transition: var(--animation-primary);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn.primary .btn-text:hover {
+  color: var(--Dark-Gray);
+  letter-spacing: 13px;
+}
+
+.btn.primary .btn-text svg path {
+  transition: var(--animation-primary);
+}
+
+.btn.primary .btn-text:hover svg path {
+  fill: var(--Dark-Gray);
+}
+
+.btn-link .btn-content {
+  position: relative; /* Ensure the .btn-content is positioned */
+  display: inline-block; /* Shrink to fit the content */
+}
+
+.btn-link .btn-content::after {
+  content: "";
+  bottom: -6px;
+  width: 50%;
+  left: 25%;
+  height: 1.4px;
+  background: var(--color-light);
+  position: absolute;
+  transform: rotate(0.001deg) scaleX(0);
+  transition: transform var(--animation-primary);
+  transform-origin: middle;
+}
+
+.btn-link:hover .btn-content::after {
+  transform: rotate(0.001deg) scaleX(1);
+  transform-origin: middle;
+}
+
+.btn.secondary .btn-click {
+  outline: 0;
+  transition: var(--animation-primary);
+  display: flex;
+  align-items: center;
+}
+
+.btn.secondary .btn-prev,
+.btn.secondary .btn-next {
+  transition: var(--animation-primary);
+  background-color: var(--color-dark);
+  padding: 2.5em 2.8em;
+  pointer-events: all;
+  cursor: pointer;
+  display: flex; /* Enables flexbox */
+  justify-content: center; /* Centers children horizontally */
+  align-items: center; /* Centers children vertically */
+}
+
+.btn.secondary .btn-prev:hover {
+  background-color: var(--Very-Dark-Gray);
+}
+
+.btn.secondary .btn-next:hover {
+  background-color: var(--Very-Dark-Gray);
+}
+
+@media screen and (max-width: 720px) {
+  .btn.secondary .btn-prev,
+  .btn.secondary .btn-next {
+    padding: 1.8em 1.8em;
+  }
+}
