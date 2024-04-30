@@ -1,3 +1,9 @@
+window.addEventListener('DOMContentLoaded',() => {
+initLoader();
+});
+
+
+
 $(document).ready(function() {
     var currentIndex = 0;
     var totalItems = $('.home-header .row:first-of-type .thumbnail').length; // Assuming equal count for thumbnails and single-info
@@ -82,3 +88,27 @@ $(document).ready(() => {
 
 
 
+function initLoader() {
+        var tl = gsap.timeline();
+
+        tl.from(" .once-in", {
+        duration: 3.3,
+        yPercent: 200,
+        ease: "Expo.easeOut",
+    }, "<0.1");
+
+     tl.from(" .once-in-left", {
+        duration: 3.3,
+        xPercent: 200,
+        ease: "Expo.easeOut",
+    }, "<0.1");
+
+     tl.from('.img-overlay', {
+        scale: 1.3, 
+        immediateRender: false,
+        duration: 3, 
+        ease: "power2.out" // Animate image sliding and scaling
+    }, "<");
+
+
+    }
